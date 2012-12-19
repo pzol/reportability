@@ -1,12 +1,12 @@
-# BmsBookingLists
+# Reportability
 
-This gem is to be used for to find lists of bookings.
+A sweet little gem helping with the display of reports.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'bms_booking_lists'
+    gem 'reportability'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install bms_booking_lists
+    $ gem install reportability
 
 ## Usage
 
