@@ -1,5 +1,5 @@
 require 'bundler/setup'
-Bundler.require :spec_unit
+require 'turnip/rspec'
 require 'reportability'
 
 Dir.glob("spec/lib/**/*_steps.rb") { |f| load f, true }

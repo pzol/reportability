@@ -14,14 +14,14 @@ group :unit do
   end
 end
 
-group :acceptance do
-  guard 'rspec', :all_after_pass => false, :spec_paths => ["spec/acceptance"],
-                 :run_all => { :cli => "-I spec/acceptance -r ./spec/acceptance/acceptance_helper.rb" }, :turnip => true,
-                 :cli => "-I spec/acceptance --color --format nested --fail-fast -r ./spec/acceptance/acceptance_helper.rb", :notification => true do
-    watch(%r{^spec/acceptance/.+_spec\.rb$})
-    # Turnip features and steps
-    watch(%r{^spec/acceptance/(.+)\.feature$})
-    watch(%r{^spec/acceptance/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
-  end
-end
+# group :acceptance do
+#   guard 'rspec', :all_after_pass => false, :spec_paths => ["spec/acceptance"],
+#                  :run_all => { :cli => "-I spec/acceptance -r ./spec/acceptance/acceptance_helper.rb" }, :turnip => true,
+#                  :cli => "-I spec/acceptance --color --format nested --fail-fast -r ./spec/acceptance/acceptance_helper.rb", :notification => true do
+#     watch(%r{^spec/acceptance/.+_spec\.rb$})
+#     # Turnip features and steps
+#     watch(%r{^spec/acceptance/(.+)\.feature$})
+#     watch(%r{^spec/acceptance/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
+#   end
+# end
 
