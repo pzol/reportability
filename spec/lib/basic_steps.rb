@@ -12,17 +12,31 @@ end
 
 step 'I pivot it' do
   r = Reportability::Pivot.new
-    r.project do |row|
-      key = row['_id']
-      [
-        "%4d-%02d" % [key['date_booked']['y'], key['date_booked']['m']],
-        [key['provider'], key['tlc']],
-        row['count']
-      ]
-    end
-    @output = r.call [:date_booked, :provider_tlc, :count], @input
+  @output = r.call [:c, :r, :v], @input
+end
+
+step 'I magic-pivot it' do
+  r = Reportability::Pivot.new
+  r.project do |row|
+    key = row['key']
+    [
+      "%4d-%02d" % [key['date_from']['y'], key['date_from']['m']],
+      [key['provider'], key['tlc']].join(', '),
+      row['value']['count']
+    ]
+  end
+  @output = r.call [:date_booked, :provider_tlc, :count], @input
 end
 
 step 'the output is' do |expected_result|
   @output.inspect.should == expected_result
+end
+
+step 'the result table is' do |table|
+  @output.rows.each_index do |i|
+    expected_row = table.raw[i] || []
+    expected = expected_row.join(' | ')
+    actual   = @output.rows[i].join(' | ')
+    actual.should == expected
+  end
 end
