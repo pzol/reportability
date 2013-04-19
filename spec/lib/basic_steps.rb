@@ -15,6 +15,20 @@ step 'I pivot it' do
   @output = r.call [:c, :r, :v], @input
 end
 
+require 'active_support/core_ext/hash/slice'
+step 'I magic-pivot it2' do
+  r = Reportability::Pivot.new
+  r.project do |row|
+    [
+      row["date"],
+      row.slice("_level", "provider", "currency", "country", "tlc"),
+      row.slice("count", "value")
+    ]
+  end
+  @output = r.call [:date_booked, :date, :values], @input
+  p @output.rows
+end
+
 step 'I magic-pivot it' do
   r = Reportability::Pivot.new
   r.project do |row|
