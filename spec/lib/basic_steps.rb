@@ -26,7 +26,6 @@ step 'I magic-pivot it2' do
     ]
   end
   @output = r.call [:date_booked, :date, :values], @input
-  p @output.rows
 end
 
 step 'I magic-pivot it' do
