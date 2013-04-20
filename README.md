@@ -18,7 +18,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Summary
+Please take notice, that the data needs to be sorted in order for the summary to work
 
 ## Contributing
 
