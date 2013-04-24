@@ -26,6 +26,10 @@ module Reportability
       @project = block
     end
 
+    def project=(proc)
+      @project = proc
+    end
+
     def new_row(v_group, num_cols)
       Array.new(num_cols) {|e| v_group if e == 0}
     end
